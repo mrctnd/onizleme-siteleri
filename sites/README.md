@@ -1,22 +1,5 @@
-# Klasör Yapısı
+# Site dosyaları
 
-Bu klasör, gelecekte doğrudan bu repoya eklenebilecek örnek siteler için alan oluşturur.
+Her alt klasör bağımsız bir önizlemedir ve kendi kök `index.html` dosyasını içerir.
 
-Örnek kullanım:
-
-```text
-sites/
-├─ crossfitcankaya-onizleme/
-│  └─ index.html
-├─ mervet-onizleme/
-│  └─ index.html
-├─ onlypilates-onizleme/
-│  └─ index.html
-```
-
-Bu şekilde her site ayrı bir sayfa gibi çalışır:
-
-- https://mrctnd.github.io/onizleme-siteleri/sites/crossfitcankaya-onizleme/
-- https://mrctnd.github.io/onizleme-siteleri/sites/mervet-onizleme/
-
-Dilerseniz daha sonra bu klasör içine her önizleme için gerçek HTML dosyalarını da ekleyebilirsiniz.
+Yeni bir siteyi `sites/<repo-adı>/` altında tut; klasör yapısını ve göreli asset yollarını koru. Katalog bağlantısı için repository kökündeki `index.html` dosyasındaki `sites` listesine de yeni siteyi ekle.

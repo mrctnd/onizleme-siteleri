@@ -6,7 +6,7 @@
     <title>Önizleme Siteleri</title>
     <meta
       name="description"
-      content="Tüm web tasarım önizleme sitelerinin tek listesi ve GitHub Pages bağlantıları."
+      content="Tüm web tasarım önizlemeleri tek repository altında, her biri ayrı GitHub Pages bağlantısıyla."
     />
     <style>
       :root {
@@ -184,17 +184,17 @@
           <div>
             <h1>Önizleme Siteleri</h1>
             <div class="subtitle">
-              Tüm tasarım örnekleri tek katalog altında ve ayrı GitHub Pages linkleriyle erişilebilir.
+              Tüm tasarım dosyaları tek repository içinde; her önizleme kendi bağlantısında yayında.
             </div>
           </div>
-          <div class="badge">GitHub Pages Ready</div>
+          <div class="badge" id="site-count"></div>
         </div>
       </header>
 
       <main class="layout" id="sites"></main>
 
       <footer>
-        Bu sayfa, her web tasarım önizleme için ayrı bir canlı bağlantı sunar.
+        Her önizleme aynı repository içindeki ayrı klasörden yayınlanır.
       </footer>
     </div>
 
@@ -268,12 +268,14 @@
       ];
 
       const container = document.getElementById('sites');
+      document.getElementById('site-count').textContent = `${sites.length} önizleme yayında`;
 
       sites.forEach((site) => {
         const card = document.createElement('article');
         card.className = 'card';
 
-        const siteUrl = `https://mrctnd.github.io/${site.repo}/`;
+        const siteUrl = `sites/${site.repo}/`;
+        const sourceUrl = `https://github.com/mrctnd/onizleme-siteleri/tree/main/sites/${site.repo}`;
 
         card.innerHTML = `
           <div>
@@ -283,7 +285,7 @@
           </div>
           <div class="links">
             <a class="primary" href="${siteUrl}" target="_blank" rel="noreferrer">Canlı Görüntüle</a>
-            <a class="secondary" href="https://github.com/mrctnd/${site.repo}" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="secondary" href="${sourceUrl}" target="_blank" rel="noreferrer">Dosyalar</a>
           </div>
         `;
 

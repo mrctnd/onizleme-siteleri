@@ -1,45 +1,33 @@
 # Önizleme Siteleri
 
-Bu repository, birden fazla web tasarım önizleme sitesini tek bir yerden yönetmek için oluşturulmuştur.
+Bu repository, tüm web sitesi tasarım önizlemelerini tek yerde tutar. Her sitenin dosyaları `sites/<repo-adı>/` klasöründedir ve kendi GitHub Pages bağlantısından açılır.
 
-## Amaç
+## Yayın adresleri
 
-- Tek bir katalog sayfası oluşturmak
-- Her önizleme sitesine ayrı GitHub Pages linki vermek
-- Yeni eklemeleri kolay hale getirmek
-
-## GitHub Pages yapısı
-
-Ana sayfa şu adreste çalışır:
-
-- https://mrctnd.github.io/onizleme-siteleri/
-
-Her site de kendi GitHub Pages URL'si ile açılır:
-
-- https://mrctnd.github.io/crossfitcankaya-onizleme/
-- https://mrctnd.github.io/mervet-onizleme/
-- https://mrctnd.github.io/onlypilates-onizleme/
+- Katalog: <https://mrctnd.github.io/onizleme-siteleri/>
+- Site örneği: <https://mrctnd.github.io/onizleme-siteleri/sites/crossfitcankaya-onizleme/>
+- Site örneği: <https://mrctnd.github.io/onizleme-siteleri/sites/mervet-onizleme/>
 
 ## Klasör yapısı
 
-Bu repoda aşağıdaki yapı kullanılabilir:
-
 ```text
 onizleme-siteleri/
-├─ index.html
-├─ README.md
-├─ sites/
-│  └─ README.md
-└─ assets/
-   └─ styles.css
+├─ index.html                 # Önizleme kataloğu
+├─ .nojekyll                  # Statik dosyaları olduğu gibi yayınla
+└─ sites/
+   ├─ README.md
+   ├─ crossfitcankaya-onizleme/
+   │  ├─ index.html
+   │  └─ assets/
+   └─ mervet-onizleme/
+      ├─ index.html
+      └─ assets/
 ```
 
-Yeni site eklendiğinde şu yöntem izlenebilir:
+## Yeni önizleme ekleme
 
-1. Site dosyalarını ilgili klasöre koy
-2. GitHub Pages için klasör dizin yapısını kontrol et
-3. Ana sayfa listesine siteyi ekle
+1. Sitenin yayınlanabilir dosyalarını `sites/<repo-adı>/` klasörüne kopyala. `index.html` bu klasörün kökünde, görseller ve diğer dosyalar da mevcut göreli yollarında olmalı.
+2. Kök `index.html` dosyasındaki `sites` listesine ad, klasör adı ve kısa açıklama ekle.
+3. `main` dalına gönder. GitHub Pages, repository kökünü yayınladığı için site şu adreste açılır: `https://mrctnd.github.io/onizleme-siteleri/sites/<repo-adı>/`.
 
-## Not
-
-Bu repo, ana katalog olarak çalışır. Gerçek tasarım örnekleri ayrı repo'larda olduğu için ana sayfa, o repo'ların GitHub Pages URL'lerini gösterir.
+Her site klasörünü kendi içinde tut; aynı isimli `index.html`, `assets/` veya font dosyaları diğer sitelerle çakışmaz.
