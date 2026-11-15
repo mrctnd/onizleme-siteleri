@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Önizleme Siteleri</title>
+    <meta
+      name="description"
+      content="Tüm web tasarım önizleme sitelerinin tek listesi ve GitHub Pages bağlantıları."
+    />
+    <style>
+      :root {
+        --bg: #0d1117;
+        --panel: #161b22;
+        --panel-2: #1f2630;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --primary: #7cc6ff;
+        --primary-2: #3fb950;
+        --border: rgba(255,255,255,0.08);
+        --shadow: 0 18px 30px rgba(0, 0, 0, 0.28);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(124,198,255,0.16), transparent 30%),
+          linear-gradient(180deg, #0b1020 0%, var(--bg) 100%);
+      }
+
+      .container {
+        width: min(1200px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 48px 0 24px;
+      }
+
+      .title-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3rem);
+        letter-spacing: -0.04em;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        color: var(--text);
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.02);
+      }
+
+      .badge::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--primary-2);
+        box-shadow: 0 0 12px rgba(63,185,80,0.9);
+      }
+
+      .subtitle {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+        padding: 20px 0 60px;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 180px;
+        padding: 18px 18px 16px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(124,198,255,0.45);
+      }
+
+      .card .pill {
+        align-self: flex-start;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(124,198,255,0.12);
+        color: var(--primary);
+        font-size: 0.74rem;
+        letter-spacing: 0.02em;
+        border: 1px solid rgba(124,198,255,0.3);
+      }
+
+      .card h2 {
+        margin: 14px 0 8px;
+        font-size: 1.08rem;
+        line-height: 1.4;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      .links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: opacity 0.2s ease;
+      }
+
+      .links a:hover { opacity: 0.9; }
+
+      .links a.primary {
+        color: #08131a;
+        background: linear-gradient(135deg, var(--primary), #d0f0ff);
+      }
+
+      .links a.secondary {
+        border: 1px solid var(--border);
+        color: var(--text);
+        background: rgba(255,255,255,0.02);
+      }
+
+      footer {
+        padding: 0 0 40px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 640px) {
+        header { padding-top: 28px; }
+        .title-wrap { align-items: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title-wrap">
+          <div>
+            <h1>Önizleme Siteleri</h1>
+            <div class="subtitle">
+              Tüm tasarım örnekleri tek katalog altında ve ayrı GitHub Pages linkleriyle erişilebilir.
+            </div>
+          </div>
+          <div class="badge">GitHub Pages Ready</div>
+        </div>
+      </header>
+
+      <main class="layout" id="sites"></main>
+
+      <footer>
+        Bu sayfa, her web tasarım önizleme için ayrı bir canlı bağlantı sunar.
+      </footer>
+    </div>
+
+    <script>
+      const sites = [
+        { name: 'CrossFit Çankaya', repo: 'crossfitcankaya-onizleme', desc: 'Fitness / spor tasarımı' },
+        { name: 'Mer-Vet', repo: 'mervet-onizleme', desc: 'Veteriner kliniği' },
+        { name: 'Only Pilates', repo: 'onlypilates-onizleme', desc: 'Pilates stüdyosu' },
+        { name: 'Duygu Nail', repo: 'duygunail-onizleme', desc: 'Beauty / nail' },
+        { name: 'Vet Fizik', repo: 'vetfizik-onizleme', desc: 'Rehabilitasyon merkezi' },
+        { name: 'Nazan Gürgen Beauty', repo: 'nazangurgen-onizleme', desc: 'Beauty / güzellik' },
+        { name: 'ERYA Pilates', repo: 'eryapilates-onizleme', desc: 'Pilates stüdyosu' },
+        { name: 'Asiya Pilates', repo: 'asiyapilates-onizleme', desc: 'Pilates stüdyosu' },
+        { name: 'Helya Yoga', repo: 'helyayoga-onizleme', desc: 'Yoga stüdyosu' },
+        { name: 'Meyra Akan Beauty', repo: 'meyraakan-onizleme', desc: 'Beauty / makyaj' },
+        { name: 'Jasmin Beauty', repo: 'jasminbeauty-onizleme', desc: 'Beauty / güzellik' },
+        { name: 'Livangel', repo: 'livangel-onizleme', desc: 'Güzellik / bakım' },
+        { name: 'Fİ Eryaman Veteriner', repo: 'fiveteriner-onizleme', desc: 'Veteriner kliniği' },
+        { name: 'VetCo', repo: 'vetco-onizleme', desc: 'Veteriner kliniği' },
+        { name: 'Megboxing', repo: 'megboxing-onizleme', desc: 'Spor / boxing' },
+        { name: 'NB Fit', repo: 'nbfit-onizleme', desc: 'Pilates / fitness' },
+        { name: 'Evrensel Dans', repo: 'evrenseldans-onizleme', desc: 'Dans akademisi' },
+        { name: 'Sevda Yiğit', repo: 'sevdayigit-onizleme', desc: 'Kaş / güzellik' },
+        { name: 'Reactive', repo: 'reactive-onizleme', desc: 'Pilates / fitness' },
+        { name: 'Mers Nail', repo: 'mersnail-onizleme', desc: 'Nail / beauty bar' },
+        { name: 'Kibele Beauty', repo: 'kibelebeauty-onizleme', desc: 'Beauty studio' },
+        { name: 'Dost Pati', repo: 'dostpati-onizleme', desc: 'Veteriner kliniği' },
+        { name: 'Vetarya', repo: 'vetarya-onizleme', desc: 'Veteriner kliniği' },
+        { name: 'Merve Coşkun Beauty', repo: 'mervecoskun-onizleme', desc: 'Beauty center' },
+        { name: 'Elefante Beauty', repo: 'elefantebeauty-onizleme', desc: 'Beauty studio' },
+        { name: 'Zest Güzellik', repo: 'zestguzellik-onizleme', desc: 'Güzellik merkezi' },
+        { name: 'Main Core', repo: 'maincore-onizleme', desc: 'Fitness / studio' },
+        { name: 'More Pilates', repo: 'morepilates-onizleme', desc: 'Pilates studio' },
+        { name: 'Lena Pilates', repo: 'lenapilates-onizleme', desc: 'Pilates studio' },
+        { name: 'Home Pilates', repo: 'homepilates-onizleme', desc: 'Pilates studio' },
+        { name: 'Büşra Kelebek', repo: 'busrakelebek-onizleme', desc: 'Kişisel marka / beauty' },
+        { name: 'Detailing Dükkanı', repo: 'detailingdukkani-onizleme', desc: 'Otomotiv / detailing' },
+        { name: 'GESA İç Mimarlık', repo: 'gesaicmimarlik-onizleme', desc: 'İç mimarlık' },
+        { name: 'Cio Fight Academy', repo: 'ciofightacademy-onizleme', desc: 'Spor / academy' },
+        { name: 'Inhale Yoga', repo: 'inhaleyoga-onizleme', desc: 'Yoga studio' },
+        { name: '8 Dil Pizza', repo: '8dilpizza-onizleme', desc: 'Restoran / pizza' },
+        { name: "Latife's", repo: 'latifes-onizleme', desc: 'Gıda / butik' },
+        { name: 'Lithops Botanik', repo: 'lithops-botanik-onizleme', desc: 'Botanik / butik' },
+        { name: 'Bala Bakehouse', repo: 'balabakehouse-onizleme', desc: 'Bakery / cafe' },
+        { name: 'Tuz 801', repo: 'tuz801-onizleme', desc: 'Food / restoran' },
+        { name: 'Bake & Joy', repo: 'bakenjoy-onizleme', desc: 'Bakery / cafe' },
+        { name: 'İlkin Özsan', repo: 'ilkinozsan-onizleme', desc: 'Makyaj / güzellik' },
+        { name: 'Ankara Kına', repo: 'ankara-kina-onizleme', desc: 'Etkinlik / organizasyon' },
+        { name: 'Rabia Alparslan', repo: 'rabiaalparslan-onizleme', desc: 'Kalıcı makyaj' },
+        { name: 'Hasan Soley', repo: 'hasansoley-onizleme', desc: 'Makeup academy' },
+        { name: 'Noar Kuaför', repo: 'noar-kuafor-onizleme', desc: 'Kuaför' },
+        { name: 'Zeynep Denli', repo: 'zeynepdenli-onizleme', desc: 'Moda evi' },
+        { name: 'Betül Butik Pasta', repo: 'betul-butik-pasta-onizleme', desc: 'Pasta / butik' },
+        { name: 'Mucize Ankara', repo: 'mucize-ankara-onizleme', desc: 'Kişisel marka' },
+        { name: 'Ankara Saç Kaynak', repo: 'ankarasackaynak-onizleme', desc: 'Saç kaynak / beauty' },
+        { name: 'Little Dreamers', repo: 'littledreamers-onizleme', desc: 'Studio / kids' },
+        { name: 'Mira Nail', repo: 'mira-nail-onizleme', desc: 'Nail studio' },
+        { name: 'Aşk-ı Mavi', repo: 'askimavi-onizleme', desc: 'Fotoğrafçılık' },
+        { name: 'Pet Care Veteriner', repo: 'petcare-veteriner-onizleme', desc: 'Veteriner kliniği' },
+        { name: 'Klassis Kuaför', repo: 'klassis-kuafor-onizleme', desc: 'Kuaför' },
+        { name: 'Berfin Öztürk Atelier', repo: 'berfinozturk-onizleme', desc: 'Atelier / tasarım' },
+        { name: 'Lost Kuaför', repo: 'lost-kuafor-onizleme', desc: 'Kuaför' },
+        { name: 'ZG Pilates', repo: 'zgpilates-onizleme', desc: 'Pilates studio' },
+        { name: 'NK Beauty', repo: 'nkbeauty-onizleme', desc: 'Güzellik / beauty' },
+        { name: 'New Body Pilates', repo: 'newbody-pilates-onizleme', desc: 'Pilates studio' },
+        { name: 'Deniz Damla', repo: 'denizdamla-onizleme', desc: 'Güzellik / bakım' },
+        { name: 'Dent Royal', repo: 'dentroyal-onizleme', desc: 'Dentist / klinik' },
+        { name: 'Pilates17', repo: 'pilates17-onizleme', desc: 'Pilates studio' },
+        { name: 'Bella Pilates', repo: 'bella-pilates-onizleme', desc: 'Pilates studio' },
+        { name: 'A Clinica Dent', repo: 'aclinicadent-onizleme', desc: 'Dental clinic' }
+      ];
+
+      const container = document.getElementById('sites');
+
+      sites.forEach((site) => {
+        const card = document.createElement('article');
+        card.className = 'card';
+
+        const siteUrl = `https://mrctnd.github.io/${site.repo}/`;
+
+        card.innerHTML = `
+          <div>
+            <span class="pill">${site.repo}</span>
+            <h2>${site.name}</h2>
+            <p>${site.desc}</p>
+          </div>
+          <div class="links">
+            <a class="primary" href="${siteUrl}" target="_blank" rel="noreferrer">Canlı Görüntüle</a>
+            <a class="secondary" href="https://github.com/mrctnd/${site.repo}" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
